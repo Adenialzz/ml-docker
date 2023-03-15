@@ -43,9 +43,9 @@ RUN chmod +x /root/Miniconda3.sh &&\
 	rm /root/Miniconda3.sh &&\
 	/opt/miniconda/bin/conda init zsh &&\
 	/opt/miniconda/bin/conda init bash &&\
-	/opt/miniconda/bin/pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple; \
+	/opt/miniconda/bin/pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple &&\
 	/opt/miniconda/bin/conda create -y -n JJ_env python=${PYTHON_VERSION} &&\
-	/opt/miniconda/bin/conda install -n JJ_env -y pytorch==${TORCH_VERSION} torchvision==${TORCHVISION_VERSION} cudatoolkit=${CUDA} -c pytorch &&\
+	/opt/miniconda/bin/conda install -n JJ_env -y pytorch==${TORCH_VERSION} torchvision==${TORCHVISION_VERSION} pytorch-cuda=${CUDA_VERSION} -c pytorch -c nvidia &&\
 	/opt/miniconda/bin/conda clean -a -y
 
 # setup nvim
