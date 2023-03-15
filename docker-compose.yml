@@ -1,0 +1,13 @@
+services:
+  test:
+    image: ubuntu-song:20.04
+    command: /usr/sbin/sshd -D -e & && sleep infinity
+    ports:
+      - "3232:22"
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            device_ids: ['0', '1']
+            capabilities: [gpu]
