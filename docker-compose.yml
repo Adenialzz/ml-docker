@@ -4,6 +4,11 @@ services:
     command: /usr/sbin/sshd -D -e & && sleep infinity
     ports:
       - "3232:22"
+    volumes:
+      - type: bind
+        source: /ssd1t/song/Datasets/
+        target: /opt/data
+        read_only: true
     deploy:
       resources:
         reservations:
